@@ -1,61 +1,49 @@
 syntax on
+
 colorscheme molokai
 set t_Co=256
+set fenc=utf-8
 
-if &compatible
-  set nocompatible
-endif
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
+call plug#begin()
+call plug#end()
 
 "表示
+inoremap { {}<Left>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
+set smartindent
+set autoindent
 set relativenumber 
 set title 
 set showmatch 
 set tabstop=2 
 set shiftwidth=2
-set smartindent
-set autoindent
 set wildmenu
 set history=5000
-set whichwrap=b,s,h,l,<,>,[,],~ 
+"set whichwrap=b,s,h,l,<,>,[,],~ 
 "set backspace=indent,eol,start
 set cursorline
 set ruler
-set paste
 set hidden
-"set virtualedit=block
+set virtualedit=block
+set virtualedit=onemore
+set expandtab
+set laststatus=2
+set clipboard=unnamed,autoselecy
+set completeopt=menuone
+set noswapfile 
 
 "検索
 set incsearch
 set ignorecase 
 set smartcase 
 set wrapscan
+set nowrap
 set hlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR> 
-
-inoremap { {}<Left>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
 
 if has('mouse')
 	set mouse=a
