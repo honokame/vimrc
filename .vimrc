@@ -3,17 +3,36 @@ syntax on
 colorscheme molokai
 set t_Co=256
 set fenc=utf-8
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+""call plug#begin()
+""Plug 'lervag/vimtex'
+""call plug#end()
 
-call plug#begin()
-call plug#end()
+""let g:vimtex_compiler_latexmk = {
+""      \ 'background': 1,
+""      \ 'build_dir': '',
+""      \ 'continuous': 1,
+""      \ 'options': [
+""      \    '-pdfdvi', 
+""      \    '-verbose',
+""      \    '-file-line-error',
+""      \    '-synctex=1',
+""      \    '-interaction=nonstopmode',
+""      \],
+""      \}
+
+""let g:vimtex_view_general_viewer
+""      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+""let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
 "表示
-inoremap { {}<Left>
+""inoremap { {}<Left>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
-
+filetype indent on
 set smartindent
 set autoindent
 set relativenumber 
@@ -36,7 +55,11 @@ set clipboard=unnamed,autoselecy
 set completeopt=menuone
 set noswapfile 
 
-"検索
+set completeopt=menuone
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
+endfor
+
 set incsearch
 set ignorecase 
 set smartcase 
